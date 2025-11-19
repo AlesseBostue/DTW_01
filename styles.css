@@ -1,0 +1,225 @@
+:root {
+  --color-bg: #0b1120;
+  --color-bg-accent: #1d2540;
+  --color-bg-deep: #050912;
+  --color-text-base: #e2e8f0;
+  --color-text-strong: #0f172a;
+  --color-tag: #38bdf8;
+  --color-primary: #38bdf8;
+  --color-primary-alt: #a855f7;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-surface-border: rgba(255, 255, 255, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --color-glow: rgba(56, 189, 248, 0.35);
+  --color-glow-strong: rgba(56, 189, 248, 0.45);
+
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  color: var(--color-text-strong);
+  background-color: var(--color-bg);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem clamp(1rem, 6vw, 4rem);
+  background: radial-gradient(circle at top, var(--color-bg-accent), var(--color-bg-deep));
+  color: var(--color-text-base);
+}
+
+a {
+  color: inherit;
+}
+
+.mosaico {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: min(100%, 1200px);
+  margin-inline: auto;
+}
+
+.tarjeta {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px var(--color-shadow);
+  backdrop-filter: blur(8px);
+  color: var(--color-text-base);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tarjeta--auto {
+  inline-size: fit-content;
+  max-inline-size: min(100%, 480px);
+  justify-self: start;
+  align-self: start;
+}
+
+.tarjeta--principal {
+  padding: clamp(1.5rem, 6vw, 2.5rem);
+}
+
+.tarjeta--horizontal {
+  grid-row: span 1;
+}
+
+.tarjeta--vertical {
+  grid-row: span 2;
+}
+
+.tarjeta--retrato {
+  justify-content: center;
+}
+
+.tarjeta--cuadrada {
+  grid-row: span 1;
+}
+
+.tarjeta--llamada {
+  justify-content: center;
+  align-items: center;
+}
+
+.tarjeta__etiqueta {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.8rem;
+  color: var(--color-tag);
+}
+
+.tarjeta__titulo {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.tarjeta__texto {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tarjeta__lista {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tarjeta__lista--contacto {
+  padding-left: 0;
+  gap: 1rem;
+}
+
+.tarjeta__lista--contacto li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.tarjeta__icono {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  color: var(--color-tag);
+}
+
+.tarjeta__figura {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.tarjeta__figura img {
+  inline-size: min(260px, 100%);
+  align-self: center;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 12px 25px var(--color-shadow);
+}
+
+.tarjeta__figura figcaption {
+  font-size: 0.9rem;
+  color: var(--color-tag);
+}
+.tarjeta__boton {
+  align-self: flex-start;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text-strong);
+  background: linear-gradient(120deg, var(--color-primary), var(--color-primary-alt));
+  box-shadow: 0 10px 30px var(--color-glow);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.tarjeta__boton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px var(--color-glow-strong);
+}
+
+.tarjeta--llamada .tarjeta__boton {
+  align-self: center;
+}
+
+@media (min-width: 900px) {
+  body {
+    padding: 4rem 0;
+  }
+
+  .mosaico {
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 0 2rem;
+  }
+
+  .tarjeta--principal {
+    grid-column: 1 / span 3;
+  }
+
+  .tarjeta--perfil {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .tarjeta--habilidades {
+    grid-column: span 2;
+  }
+
+  .tarjeta--retrato {
+    grid-column: span 3;
+  }
+
+  .tarjeta--proyectos {
+    grid-column: span 4;
+    grid-row: span 1;
+  }
+
+  .tarjeta--contacto {
+    grid-column: span 2;
+  }
+
+  .tarjeta--llamada {
+    grid-column: span 1;
+  }
+}
+
